@@ -26,7 +26,7 @@ window/dpi/allow_hidpi=true
 window/vsync/use_vsync=false
 window/handheld/orientation="reverse_landscape"
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep"
 
 [rendering]
 
