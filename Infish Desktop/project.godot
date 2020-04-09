@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="In- Fish"
-run/main_scene="res://tscene/Auth.tscn"
+run/main_scene="res://src/view/Auth.tscn"
 boot_splash/image="res://assets/img/black.png"
 config/icon="res://icon.png"
 
@@ -26,7 +26,7 @@ window/dpi/allow_hidpi=true
 window/vsync/use_vsync=false
 window/handheld/orientation="reverse_landscape"
 window/stretch/mode="viewport"
-window/stretch/aspect="keep"
+window/stretch/aspect="keep_height"
 
 [rendering]
 

@@ -1,0 +1,156 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/controller/DasborController.gd" type="Script" id=1]
+[ext_resource path="res://src/view/layout/base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://asset/ui/button/button_normal.png" type="Texture" id=3]
+[ext_resource path="res://asset/ui/button/button_hover.png" type="Texture" id=4]
+[ext_resource path="res://asset/ui/font/NotoSans-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://asset/ui/ui.theme" type="Theme" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 5 )
+
+[node name="Dasbor" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="layout" parent="." instance=ExtResource( 2 )]
+
+[node name="menucontent" type="PanelContainer" parent="layout"]
+margin_left = 25.0
+margin_top = 208.0
+margin_right = 221.0
+margin_bottom = 416.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="layout/menucontent"]
+margin_right = 196.0
+margin_bottom = 208.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="layout/menucontent/ScrollContainer"]
+editor/display_folded = true
+margin_right = 180.0
+margin_bottom = 242.0
+
+[node name="button" type="TextureButton" parent="layout/menucontent/ScrollContainer/VBoxContainer"]
+editor/display_folded = true
+margin_right = 180.0
+margin_bottom = 37.0
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="layout/menucontent/ScrollContainer/VBoxContainer/button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Button Text"
+valign = 1
+
+[node name="button2" type="TextureButton" parent="layout/menucontent/ScrollContainer/VBoxContainer"]
+editor/display_folded = true
+margin_top = 41.0
+margin_right = 180.0
+margin_bottom = 78.0
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="layout/menucontent/ScrollContainer/VBoxContainer/button2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Button Text"
+valign = 1
+
+[node name="button3" type="TextureButton" parent="layout/menucontent/ScrollContainer/VBoxContainer"]
+editor/display_folded = true
+margin_top = 82.0
+margin_right = 180.0
+margin_bottom = 119.0
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="layout/menucontent/ScrollContainer/VBoxContainer/button3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Button Text"
+valign = 1
+
+[node name="button4" type="TextureButton" parent="layout/menucontent/ScrollContainer/VBoxContainer"]
+editor/display_folded = true
+margin_top = 123.0
+margin_right = 180.0
+margin_bottom = 160.0
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="layout/menucontent/ScrollContainer/VBoxContainer/button4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Button Text"
+valign = 1
+
+[node name="button5" type="TextureButton" parent="layout/menucontent/ScrollContainer/VBoxContainer"]
+editor/display_folded = true
+margin_top = 164.0
+margin_right = 180.0
+margin_bottom = 201.0
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="layout/menucontent/ScrollContainer/VBoxContainer/button5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Button Text"
+valign = 1
+
+[node name="button6" type="TextureButton" parent="layout/menucontent/ScrollContainer/VBoxContainer"]
+margin_top = 205.0
+margin_right = 180.0
+margin_bottom = 242.0
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="layout/menucontent/ScrollContainer/VBoxContainer/button6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Button Text"
+valign = 1
+
+[node name="pagecontent" type="PanelContainer" parent="layout"]
+margin_left = 258.0
+margin_top = 92.0
+margin_right = 1004.0
+margin_bottom = 582.0
+theme = ExtResource( 6 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="layout/pagecontent"]
+margin_right = 746.0
+margin_bottom = 490.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="layout/pagecontent/ScrollContainer"]
+

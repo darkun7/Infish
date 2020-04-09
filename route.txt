@@ -1,0 +1,63 @@
++-----------+------------------------------------------+------------------------------------------------------------------------+-----------------+
+| Method    | Path                                     | Action                                                                 | Hak Akses       |
++-----------+------------------------------------------+------------------------------------------------------------------------+-----------------+
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
+| GET|HEAD  | 
++-----------+------------------------------------------+------------------------------------------------------------------------+-----------------+
+
+
+
+.
+├── asset
+│   ├── ui
+│   │   ├── button
+│   │   ├── font
+│   │   ├── icon
+│   │   ├── input
+│   │   ├── msgbox
+│   │   ├── notification
+│   │
+│   ├── img
+│
+├── src
+│   ├── autoload
+│   │   ├── ?.gd
+│   │
+│   ├── lib
+│   │   ├── mysql_connect.gd
+│   │   ├── ?.gd
+│   │
+│   ├── modal
+│   │   ├── ?.gd 		{extend /libraries/mysql_connect.gd}
+│   │
+│   ├── controller
+│   │   ├── ?.gd
+│   │   ├── ?.gd
+│   │
+│   ├── view
+│   │   ├── include
+│   │   ├── ?.tscn
+│   │   ├── ?.tscn
+│
+└── project.godot
