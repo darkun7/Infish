@@ -1,0 +1,292 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://src/controller/MessageController.gd" type="Script" id=1]
+[ext_resource path="res://assets/ui/icon/indicator_signal.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/icon/indicator_battery.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/font/OpenSans-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/ui/icon/icon_back_white.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/font/OpenSans-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/ui/icon/msg_target.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/icon/msg_numpad.png" type="Texture" id=8]
+[ext_resource path="res://assets/bubbleChat.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/ui/icon/msg_send.png" type="Texture" id=10]
+[ext_resource path="res://assets/ui/icon/msg_send_active.png" type="Texture" id=11]
+[ext_resource path="res://assets/ui/icon/msg_plus.png" type="Texture" id=12]
+[ext_resource path="res://assets/ui/icon/msg_plus_active.png" type="Texture" id=13]
+[ext_resource path="res://assets/ui/button/btnTextFormat.stylebox" type="StyleBox" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 21
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0.0941176 )
+border_width_bottom = 2
+border_color = Color( 0.329412, 0.329412, 0.329412, 0.368627 )
+border_blend = true
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+extra_spacing_top = -6
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 1, 1, 1 )
+
+[node name="Message" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="indicator" type="ColorRect" parent="."]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -447.0
+color = Color( 0.0392157, 0.0313726, 0.25098, 1 )
+
+[node name="container" type="HBoxContainer" parent="indicator"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -152.0
+margin_top = 5.0
+margin_right = 151.0
+margin_bottom = 28.0
+custom_constants/separation = 7
+alignment = 2
+
+[node name="TextureRect2" type="TextureRect" parent="indicator/container"]
+margin_left = 223.0
+margin_right = 238.0
+margin_bottom = 23.0
+texture = ExtResource( 2 )
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="indicator/container"]
+margin_left = 245.0
+margin_right = 255.0
+margin_bottom = 23.0
+texture = ExtResource( 3 )
+stretch_mode = 4
+
+[node name="currentTime" type="Label" parent="indicator/container"]
+margin_left = 262.0
+margin_right = 303.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 1 )
+text = "12:30"
+
+[node name="nav" type="ColorRect" parent="."]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 33.0
+margin_bottom = -390.0
+color = Color( 0.0666667, 0.27451, 0.592157, 1 )
+
+[node name="container" type="HBoxContainer" parent="nav"]
+margin_left = 7.0
+margin_top = 6.0
+margin_right = 314.0
+margin_bottom = 49.0
+custom_constants/separation = 10
+
+[node name="btn_back" type="TextureButton" parent="nav/container"]
+margin_right = 27.0
+margin_bottom = 43.0
+texture_normal = ExtResource( 5 )
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="nav/container"]
+margin_left = 37.0
+margin_top = 6.0
+margin_right = 124.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 2 )
+text = "Message"
+
+[node name="receiver" type="ColorRect" parent="."]
+editor/display_folded = true
+anchor_right = 1.0
+margin_top = 90.0
+margin_bottom = 133.0
+color = Color( 0.976471, 0.976471, 0.976471, 1 )
+
+[node name="To" type="TextureRect" parent="receiver"]
+margin_left = 7.0
+margin_top = 5.0
+margin_right = 42.0
+margin_bottom = 29.0
+texture = ExtResource( 7 )
+
+[node name="LineEdit" type="LineEdit" parent="receiver"]
+margin_left = 51.0
+margin_top = 5.0
+margin_right = 280.0
+margin_bottom = 29.0
+custom_styles/read_only = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "88671"
+max_length = 12
+editable = false
+expand_to_text_length = true
+context_menu_enabled = false
+placeholder_alpha = 0.0
+
+[node name="TextureRect" type="TextureRect" parent="receiver"]
+margin_left = 294.343
+margin_top = 6.89075
+margin_right = 310.343
+margin_bottom = 30.8907
+texture = ExtResource( 8 )
+
+[node name="msgLog" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 132.0
+margin_bottom = -54.0
+color = Color( 0.854902, 0.854902, 0.854902, 1 )
+
+[node name="scroll" type="ScrollContainer" parent="msgLog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 9.0
+margin_right = -9.0
+margin_bottom = -58.0
+
+[node name="msgContainer" type="VBoxContainer" parent="msgLog/scroll"]
+margin_right = 287.0
+margin_bottom = 14.0
+custom_constants/separation = 5
+
+[node name="dummy" type="Label" parent="msgLog/scroll/msgContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 287.0
+margin_bottom = 14.0
+text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+
+[node name="bubbleChat" parent="msgLog/scroll/msgContainer" instance=ExtResource( 9 )]
+visible = false
+anchor_right = 0.0
+margin_left = 0.0
+margin_top = 18.0
+margin_right = 301.0
+margin_bottom = 42.0
+
+[node name="messageBox" type="ColorRect" parent="."]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 528.0
+
+[node name="msg" type="TextEdit" parent="messageBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 38.0
+margin_top = 5.0
+margin_right = -46.0
+margin_bottom = -6.0
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Tulis Pesan"
+wrap_enabled = true
+
+[node name="btnSend" type="TextureButton" parent="messageBox"]
+margin_left = 273.6
+margin_top = 4.74994
+margin_right = 313.6
+margin_bottom = 44.7499
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
+expand = true
+stretch_mode = 3
+
+[node name="btnTextFormat" type="TextureButton" parent="messageBox"]
+margin_left = -0.944008
+margin_top = 3.04352
+margin_right = 39.056
+margin_bottom = 43.0435
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+expand = true
+stretch_mode = 3
+
+[node name="formatOption" type="Panel" parent="."]
+editor/display_folded = true
+visible = false
+margin_top = 465.0
+margin_right = 320.0
+margin_bottom = 525.0
+custom_styles/panel = SubResource( 7 )
+
+[node name="gridContainer" type="GridContainer" parent="formatOption"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -147.0
+margin_top = 13.0
+margin_right = 147.0
+margin_bottom = 55.0
+custom_constants/vseparation = 9
+custom_constants/hseparation = 23
+columns = 3
+
+[node name="tf_pendapatan" type="Button" parent="formatOption/gridContainer"]
+margin_right = 74.0
+margin_bottom = 14.0
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/normal = ExtResource( 14 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Pendapatan"
+
+[node name="tf_klaim" type="Button" parent="formatOption/gridContainer"]
+margin_left = 97.0
+margin_right = 190.0
+margin_bottom = 14.0
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/normal = ExtResource( 14 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Kaim investasi"
+
+[node name="tf_pengeluaran" type="Button" parent="formatOption/gridContainer"]
+margin_left = 213.0
+margin_right = 291.0
+margin_bottom = 14.0
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/normal = ExtResource( 14 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Pengeluaran"
+
+[node name="tf_setoran" type="Button" parent="formatOption/gridContainer"]
+margin_top = 23.0
+margin_right = 74.0
+margin_bottom = 37.0
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/normal = ExtResource( 14 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Setoran"
+
+[connection signal="button_up" from="messageBox/btnSend" to="." method="_on_btnSend_button_up"]
+[connection signal="button_up" from="messageBox/btnTextFormat" to="." method="_on_btnTextFormat_button_up"]
+[connection signal="pressed" from="formatOption/gridContainer/tf_pendapatan" to="." method="_on_tf_pendapatan_pressed"]
+[connection signal="pressed" from="formatOption/gridContainer/tf_klaim" to="." method="_on_tf_klaim_pressed"]
+[connection signal="pressed" from="formatOption/gridContainer/tf_pengeluaran" to="." method="_on_tf_pengeluaran_pressed"]
+[connection signal="pressed" from="formatOption/gridContainer/tf_setoran" to="." method="_on_tf_setoran_pressed"]

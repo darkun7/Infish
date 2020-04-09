@@ -16,13 +16,16 @@ _global_script_class_icons={
 [application]
 
 config/name="Mobile Gateway for Infish"
-run/main_scene="res://tscene/Message.tscn"
+run/main_scene="res://src/view/Message.tscn"
 config/icon="res://icon.png"
 
 [display]
 
 window/size/width=320
-window/size/height=480
+window/size/height=580
+window/size/resizable=false
+window/size/always_on_top=true
+window/stretch/mode="2d"
 
 [rendering]
 
