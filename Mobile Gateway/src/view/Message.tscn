@@ -1,26 +1,28 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/controller/MessageController.gd" type="Script" id=1]
-[ext_resource path="res://assets/ui/icon/indicator_signal.png" type="Texture" id=2]
-[ext_resource path="res://assets/ui/icon/indicator_battery.png" type="Texture" id=3]
-[ext_resource path="res://assets/ui/font/OpenSans-Bold.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://assets/ui/icon/icon_back_white.png" type="Texture" id=5]
-[ext_resource path="res://assets/ui/font/OpenSans-Regular.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://assets/ui/icon/msg_target.png" type="Texture" id=7]
+[ext_resource path="res://src/lib/MysqlConnect.res" type="PackedScene" id=2]
+[ext_resource path="res://assets/ui/icon/indicator_signal.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/icon/indicator_battery.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/font/OpenSans-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/ui/icon/icon_back_white.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/font/OpenSans-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/ui/icon/msg_numpad.png" type="Texture" id=8]
-[ext_resource path="res://assets/bubbleChat.tscn" type="PackedScene" id=9]
-[ext_resource path="res://assets/ui/icon/msg_send.png" type="Texture" id=10]
-[ext_resource path="res://assets/ui/icon/msg_send_active.png" type="Texture" id=11]
-[ext_resource path="res://assets/ui/icon/msg_plus.png" type="Texture" id=12]
-[ext_resource path="res://assets/ui/icon/msg_plus_active.png" type="Texture" id=13]
-[ext_resource path="res://assets/ui/button/btnTextFormat.stylebox" type="StyleBox" id=14]
+[ext_resource path="res://assets/ui/icon/msg_target.png" type="Texture" id=9]
+[ext_resource path="res://assets/ui/icon/msg_sender.png" type="Texture" id=10]
+[ext_resource path="res://assets/bubbleChat.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/ui/icon/msg_send.png" type="Texture" id=12]
+[ext_resource path="res://assets/ui/icon/msg_send_active.png" type="Texture" id=13]
+[ext_resource path="res://assets/ui/icon/msg_plus.png" type="Texture" id=14]
+[ext_resource path="res://assets/ui/icon/msg_plus_active.png" type="Texture" id=15]
+[ext_resource path="res://assets/ui/button/btnTextFormat.stylebox" type="StyleBox" id=16]
 
 [sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 21
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.6, 0.6, 0.6, 0.0941176 )
@@ -31,13 +33,13 @@ expand_margin_left = 5.0
 expand_margin_right = 5.0
 
 [sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
 [sub_resource type="DynamicFont" id=6]
 extra_spacing_top = -6
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 1, 1, 1, 1 )
@@ -49,6 +51,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MySQL" parent="." instance=ExtResource( 2 )]
 
 [node name="indicator" type="ColorRect" parent="."]
 editor/display_folded = true
@@ -71,14 +75,14 @@ alignment = 2
 margin_left = 223.0
 margin_right = 238.0
 margin_bottom = 23.0
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 stretch_mode = 6
 
 [node name="TextureRect" type="TextureRect" parent="indicator/container"]
 margin_left = 245.0
 margin_right = 255.0
 margin_bottom = 23.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 4
 
 [node name="currentTime" type="Label" parent="indicator/container"]
@@ -86,7 +90,7 @@ margin_left = 262.0
 margin_right = 303.0
 margin_bottom = 23.0
 custom_fonts/font = SubResource( 1 )
-text = "12:30"
+text = "19:22"
 
 [node name="nav" type="ColorRect" parent="."]
 editor/display_folded = true
@@ -106,7 +110,7 @@ custom_constants/separation = 10
 [node name="btn_back" type="TextureButton" parent="nav/container"]
 margin_right = 27.0
 margin_bottom = 43.0
-texture_normal = ExtResource( 5 )
+texture_normal = ExtResource( 6 )
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="nav/container"]
@@ -117,25 +121,36 @@ margin_bottom = 36.0
 custom_fonts/font = SubResource( 2 )
 text = "Message"
 
-[node name="receiver" type="ColorRect" parent="."]
-editor/display_folded = true
+[node name="header" type="ColorRect" parent="."]
 anchor_right = 1.0
 margin_top = 90.0
 margin_bottom = 133.0
 color = Color( 0.976471, 0.976471, 0.976471, 1 )
 
-[node name="To" type="TextureRect" parent="receiver"]
+[node name="btn_PhoneSetting" type="TextureButton" parent="header"]
+margin_left = 294.343
+margin_top = 6.89075
+margin_right = 310.343
+margin_bottom = 30.8907
+texture_normal = ExtResource( 8 )
+
+[node name="receiver" type="Control" parent="header"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="To" type="TextureRect" parent="header/receiver"]
 margin_left = 7.0
 margin_top = 5.0
 margin_right = 42.0
 margin_bottom = 29.0
-texture = ExtResource( 7 )
+texture = ExtResource( 9 )
 
-[node name="LineEdit" type="LineEdit" parent="receiver"]
+[node name="target" type="LineEdit" parent="header/receiver"]
 margin_left = 51.0
 margin_top = 5.0
 margin_right = 280.0
-margin_bottom = 29.0
+margin_bottom = 38.0
 custom_styles/read_only = SubResource( 3 )
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -146,14 +161,35 @@ expand_to_text_length = true
 context_menu_enabled = false
 placeholder_alpha = 0.0
 
-[node name="TextureRect" type="TextureRect" parent="receiver"]
-margin_left = 294.343
-margin_top = 6.89075
-margin_right = 310.343
-margin_bottom = 30.8907
-texture = ExtResource( 8 )
+[node name="sender" type="Control" parent="header"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="From" type="TextureRect" parent="header/sender"]
+margin_left = 7.0
+margin_top = 5.0
+margin_right = 42.0
+margin_bottom = 29.0
+texture = ExtResource( 10 )
+
+[node name="phoneNumber" type="LineEdit" parent="header/sender"]
+margin_left = 51.0
+margin_top = 5.0
+margin_right = 280.0
+margin_bottom = 38.0
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/selection_color = Color( 0.0666667, 0.419608, 0.592157, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "08116013106"
+max_length = 12
+expand_to_text_length = true
+context_menu_enabled = false
+placeholder_text = "Nomor HP Pengusaha"
+placeholder_alpha = 0.0
 
 [node name="msgLog" type="ColorRect" parent="."]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 132.0
@@ -179,13 +215,13 @@ margin_right = 287.0
 margin_bottom = 14.0
 text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 
-[node name="bubbleChat" parent="msgLog/scroll/msgContainer" instance=ExtResource( 9 )]
+[node name="bubbleChat" parent="msgLog/scroll/msgContainer" instance=ExtResource( 11 )]
 visible = false
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 18.0
-margin_right = 301.0
-margin_bottom = 42.0
+margin_top = 19.0
+margin_right = 287.0
+margin_bottom = 43.0
 
 [node name="messageBox" type="ColorRect" parent="."]
 editor/display_folded = true
@@ -202,6 +238,8 @@ margin_right = -46.0
 margin_bottom = -6.0
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
+custom_colors/selection_color = Color( 0.0666667, 0.419608, 0.592157, 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Tulis Pesan"
 wrap_enabled = true
@@ -211,8 +249,8 @@ margin_left = 273.6
 margin_top = 4.74994
 margin_right = 313.6
 margin_bottom = 44.7499
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 11 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
 expand = true
 stretch_mode = 3
 
@@ -221,13 +259,12 @@ margin_left = -0.944008
 margin_top = 3.04352
 margin_right = 39.056
 margin_bottom = 43.0435
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 13 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
 expand = true
 stretch_mode = 3
 
 [node name="formatOption" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_top = 465.0
 margin_right = 320.0
@@ -248,9 +285,9 @@ columns = 3
 [node name="tf_pendapatan" type="Button" parent="formatOption/gridContainer"]
 margin_right = 74.0
 margin_bottom = 14.0
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/normal = ExtResource( 14 )
+custom_styles/hover = ExtResource( 16 )
+custom_styles/pressed = ExtResource( 16 )
+custom_styles/normal = ExtResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Pendapatan"
 
@@ -258,9 +295,9 @@ text = "Pendapatan"
 margin_left = 97.0
 margin_right = 190.0
 margin_bottom = 14.0
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/normal = ExtResource( 14 )
+custom_styles/hover = ExtResource( 16 )
+custom_styles/pressed = ExtResource( 16 )
+custom_styles/normal = ExtResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Kaim investasi"
 
@@ -268,9 +305,9 @@ text = "Kaim investasi"
 margin_left = 213.0
 margin_right = 291.0
 margin_bottom = 14.0
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/normal = ExtResource( 14 )
+custom_styles/hover = ExtResource( 16 )
+custom_styles/pressed = ExtResource( 16 )
+custom_styles/normal = ExtResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Pengeluaran"
 
@@ -278,15 +315,29 @@ text = "Pengeluaran"
 margin_top = 23.0
 margin_right = 74.0
 margin_bottom = 37.0
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/normal = ExtResource( 14 )
+custom_styles/hover = ExtResource( 16 )
+custom_styles/pressed = ExtResource( 16 )
+custom_styles/normal = ExtResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Setoran"
 
+[node name="tf_penjualan" type="Button" parent="formatOption/gridContainer"]
+margin_left = 97.0
+margin_top = 23.0
+margin_right = 190.0
+margin_bottom = 37.0
+custom_styles/hover = ExtResource( 16 )
+custom_styles/pressed = ExtResource( 16 )
+custom_styles/normal = ExtResource( 16 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Penjualan"
+
+[connection signal="button_up" from="header/btn_PhoneSetting" to="." method="_on_btn_PhoneSetting_button_up"]
+[connection signal="text_changed" from="header/sender/phoneNumber" to="." method="_on_phoneNumber_text_changed"]
 [connection signal="button_up" from="messageBox/btnSend" to="." method="_on_btnSend_button_up"]
 [connection signal="button_up" from="messageBox/btnTextFormat" to="." method="_on_btnTextFormat_button_up"]
 [connection signal="pressed" from="formatOption/gridContainer/tf_pendapatan" to="." method="_on_tf_pendapatan_pressed"]
 [connection signal="pressed" from="formatOption/gridContainer/tf_klaim" to="." method="_on_tf_klaim_pressed"]
 [connection signal="pressed" from="formatOption/gridContainer/tf_pengeluaran" to="." method="_on_tf_pengeluaran_pressed"]
 [connection signal="pressed" from="formatOption/gridContainer/tf_setoran" to="." method="_on_tf_setoran_pressed"]
+[connection signal="pressed" from="formatOption/gridContainer/tf_penjualan" to="." method="_on_tf_penjualan_pressed"]
