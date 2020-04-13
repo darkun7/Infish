@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/controller/MessageController.gd" type="Script" id=1]
-[ext_resource path="res://src/lib/MysqlConnect.res" type="PackedScene" id=2]
+[ext_resource path="res://src/lib/MySQL.res" type="PackedScene" id=2]
 [ext_resource path="res://assets/ui/icon/indicator_signal.png" type="Texture" id=3]
 [ext_resource path="res://assets/ui/icon/indicator_battery.png" type="Texture" id=4]
 [ext_resource path="res://assets/ui/font/OpenSans-Bold.ttf" type="DynamicFontData" id=5]
@@ -189,7 +189,6 @@ placeholder_text = "Nomor HP Pengusaha"
 placeholder_alpha = 0.0
 
 [node name="msgLog" type="ColorRect" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 132.0
@@ -265,6 +264,7 @@ expand = true
 stretch_mode = 3
 
 [node name="formatOption" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_top = 465.0
 margin_right = 320.0
@@ -331,6 +331,12 @@ custom_styles/pressed = ExtResource( 16 )
 custom_styles/normal = ExtResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Penjualan"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 164.517
+margin_top = 47.8819
+margin_right = 204.517
+margin_bottom = 87.8819
 
 [connection signal="button_up" from="header/btn_PhoneSetting" to="." method="_on_btn_PhoneSetting_button_up"]
 [connection signal="text_changed" from="header/sender/phoneNumber" to="." method="_on_phoneNumber_text_changed"]

@@ -78,9 +78,6 @@ func _on_btnSend_button_up():
 	var pesan = message.text
 	if(Handler.validate(pesan)):
 		userSendMsg(pesan)
-		var query = "SELECT * FROM `users`"
-		$MySQL.RequestPOST(query)
-		print($MySQL._get_response())
 		systemMsg(gw._gw_in_infish(pesan, noHp))
 
 func userSendMsg(pesan):
