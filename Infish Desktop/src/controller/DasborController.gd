@@ -1,7 +1,9 @@
 extends Control
 #onready var session = 
 
+var active_page
+
 func _ready():
-	$layout/Header/Control/PageName.text = "Dasbor"
-	$layout/Header/Control/PageDesc.text = "Dasbor untuk "
+	$base/Header/Wraper/PageName.text = "Dasbor"
+	$base/Header/Wraper/PageDesc.text = "Dasbor untuk "
 

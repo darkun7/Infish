@@ -25,10 +25,10 @@ func _on_btn_register_button_up():
 	var inputs = [fname, lname, phone, surel, sandi]
 	var reqs   = [1,1,1,1,1]
 	if(Handler.validate(inputs, reqs)):
-		$MsgBox.open("sukses","Pendaftaran","Anda berhasil melakukan pendaftaran.")
+		$MsgBox.open("SUKSES","Pendaftaran","Anda berhasil melakukan pendaftaran.")
 		_on_btn_goto_login_button_up()
 	else:
-		$MsgBox.open("error","Pendaftaran","Harap mengisi formulir pendaftaran.")
+		$MsgBox.open("ERROR","Pendaftaran","Harap mengisi formulir pendaftaran.")
 
 # ========= Login ========
 func _on_btn_login_button_up():
@@ -40,4 +40,4 @@ func _on_btn_login_button_up():
 	if(Handler.validate(inputs, reqs)):
 		get_tree().change_scene("res://src/view/Dasbor.tscn")
 	else:
-		$MsgBox.open("error","Masuk","Kredensial alamat surel/ kata sandi tidak tepat.")
+		$MsgBox.open("ERROR","Masuk","Kredensial alamat surel/ kata sandi tidak tepat.")

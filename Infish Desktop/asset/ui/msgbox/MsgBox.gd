@@ -11,14 +11,13 @@ func _on_timer_timeout():
 
 func open(type, title, message):
 	var word = (message.split(' ', false).size())*1.2
-	if type == "sukses" or type == "1":
-		$box.color = "00ffb1"
-	elif type == "info" or type == "2":
-		$box.color = "00fff9"
-	elif type == "error" or type == "3": 
-		$box.color = "ff9c9c"
-	else:
-		$box.color = "ff9c9c"
+	match type:
+		"SUKSES":
+			$box.color = "00ffb1"
+		"INFO":
+			$box.color = "00fff9"
+		"ERROR":
+			$box.color = "ff9c9c"
 	$box/head/text.text = title
 	$box/message.text = message
 	$timer.wait_time = word

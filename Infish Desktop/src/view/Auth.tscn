@@ -29,7 +29,6 @@ margin_right = 1024.0
 margin_bottom = 602.0
 
 [node name="split" type="HSplitContainer" parent="container"]
-editor/display_folded = true
 margin_right = 1024.0
 margin_bottom = 602.0
 rect_min_size = Vector2( 1024, 600 )
@@ -44,7 +43,6 @@ margin_bottom = 602.0
 texture = ExtResource( 2 )
 
 [node name="r_side" type="CenterContainer" parent="container/split"]
-editor/display_folded = true
 margin_left = 688.0
 margin_right = 1024.0
 margin_bottom = 602.0
