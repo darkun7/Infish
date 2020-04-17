@@ -1,9 +1,11 @@
 extends Control
 
 var fullscreen_mode = true
+var user_setting = false
 
 func _ready():
 	#OS.window_borderless = true
+	
 	pass
 
 # ========= Events ========
@@ -27,5 +29,24 @@ func fullscreen(type : bool = true):
 		#OS.window_borderless = true
 		$Control/fullscreen.set("texture_normal", load("res://asset/ui/icon/navigator/fullscreen-1.png"))
 	pass
+
+
+
+func _on_user_setting_button_up():
+	if(!user_setting):
+		$Control/user_setting/user_panel.visible = true
+	else:
+		$Control/user_setting/user_panel.visible = false
+	user_setting = !user_setting
+	print(user_setting)
+
+func _on_btn_account_button_up():
+	_on_user_setting_button_up()
+	#
+
+func _on_btn_logout_button_up():
+	_on_user_setting_button_up()
+	get_tree().change_scene("res://src/view/Auth.tscn")
+
 
 
