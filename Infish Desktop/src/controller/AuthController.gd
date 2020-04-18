@@ -45,6 +45,12 @@ func _on_btn_login_button_up():
 	var inputs = [surel, sandi]
 	var reqs = [1,1]
 	if(Handler.validate(inputs, reqs)):
+		var data = {
+            username = "Tester",
+			password = sandi,
+            role = surel
+        }
+		DB.saveSession(data)
 		get_tree().change_scene("res://src/view/Dasbor.tscn")
 	else:
 		$MsgBox.open("ERROR","Masuk","Kredensial alamat surel/ kata sandi tidak tepat.")

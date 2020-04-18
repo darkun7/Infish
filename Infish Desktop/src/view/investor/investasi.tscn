@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/controller/InvestasiController.gd" type="Script" id=1]
+[ext_resource path="res://asset/ui/ui.theme" type="Theme" id=2]
+[ext_resource path="res://asset/ui/button/btn_tambah.res" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="ImageTexture" id=2]
+
+[node name="pengusaha" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 18.0
+margin_top = 17.0
+margin_right = -136.0
+margin_bottom = 177.0
+script = ExtResource( 1 )
+
+[node name="table" type="ItemList" parent="."]
+margin_left = -18.0
+margin_top = 70.0
+margin_right = 814.0
+margin_bottom = 597.0
+theme = ExtResource( 2 )
+custom_styles/bg = SubResource( 1 )
+custom_colors/font_color_selected = Color( 0, 0.454902, 0.807843, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+items = [ "No", null, false, "Pengusaha", null, false, "Nominal", null, false, "Bank", null, false, "Tanggal", null, false, "Status", null, false, "Aksi", SubResource( 2 ), false ]
+allow_reselect = true
+auto_height = true
+max_columns = 7
+same_column_width = true
+icon_mode = 0
+
+[node name="tambah" parent="." instance=ExtResource( 3 )]
+
+[connection signal="item_rmb_selected" from="table" to="." method="_on_table_item_rmb_selected"]
+[connection signal="item_selected" from="table" to="." method="_on_table_item_selected"]

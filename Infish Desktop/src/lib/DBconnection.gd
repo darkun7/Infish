@@ -22,3 +22,26 @@ func handleRequest(method: String, data : String):
 	var data_received = yield(self, "request_completed")  #await like function
 	var raw_response  = JSON.parse(data_received[3].get_string_from_utf8()).result
 	print(raw_response)
+
+func readSession():
+	var data
+	var file = File.new()
+	file.open("res://session.json", File.READ)
+	data = JSON.parse(file.get_as_text())
+	file.close()
+	return data.result
+
+func pushSession(key : Array, value : Array):
+	var data
+	var session = readSession()
+	for n in range(len(key)):
+		session[key[n]] = value[n]
+	saveSession(session)
+	return true
+
+func saveSession(data):
+	var file = File.new()
+	file.open("res://session.json", File.WRITE)
+	file.store_line(JSON.print(data))
+	file.close()
+	return true

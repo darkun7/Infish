@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/lib/DataGrafik.gd" type="Script" id=1]
+[ext_resource path="res://addons/GDCharts/script.gd" type="Script" id=2]
+[ext_resource path="res://addons/GDCharts/icon.png" type="Texture" id=3]
+[ext_resource path="res://asset/ui/font/NotoSans-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 4 )
+
+[node name="Grafik" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DataGrafik" type="Control" parent="."]
+margin_bottom = 600.0
+script = ExtResource( 1 )
+
+[node name="chart" type="ReferenceRect" parent="DataGrafik"]
+margin_left = 42.0
+margin_top = 39.0
+margin_right = 595.0
+margin_bottom = 405.0
+border_color = Color( 1, 0, 0, 0 )
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+label_font = SubResource( 1 )
+

@@ -3,9 +3,10 @@ extends Control
 var fullscreen_mode = true
 var user_setting = false
 
+signal user_setting
+
 func _ready():
 	#OS.window_borderless = true
-	
 	pass
 
 # ========= Events ========
@@ -38,9 +39,9 @@ func _on_user_setting_button_up():
 	else:
 		$Control/user_setting/user_panel.visible = false
 	user_setting = !user_setting
-	print(user_setting)
 
 func _on_btn_account_button_up():
+	emit_signal("user_setting")
 	_on_user_setting_button_up()
 	#
 

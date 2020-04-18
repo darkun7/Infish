@@ -143,13 +143,16 @@ hint_tooltip = "Nama belakang"
 theme = ExtResource( 5 )
 placeholder_text = "Nama Belakang"
 
-[node name="in_phone" type="LineEdit" parent="container/split/r_side/vcontainer/panel_register"]
+[node name="in_phone" type="SpinBox" parent="container/split/r_side/vcontainer/panel_register"]
 margin_top = 132.0
 margin_right = 288.0
 margin_bottom = 155.0
 hint_tooltip = "Nomor telefon "
 theme = ExtResource( 5 )
-placeholder_text = "Nomor Telefon"
+min_value = 8.0
+value = 8.0
+allow_greater = true
+prefix = "+62"
 
 [node name="in_surel" type="LineEdit" parent="container/split/r_side/vcontainer/panel_register"]
 margin_top = 176.0

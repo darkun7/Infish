@@ -28,6 +28,10 @@ window/handheld/orientation="reverse_landscape"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "GDCharts" )
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
