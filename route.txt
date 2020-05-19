@@ -1,34 +1,4 @@
-+-----------+------------------------------------------+------------------------------------------------------------------------+-----------------+
-| Method    | Path                                     | Action                                                                 | Hak Akses       |
-+-----------+------------------------------------------+------------------------------------------------------------------------+-----------------+
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-| GET|HEAD  | 
-+-----------+------------------------------------------+------------------------------------------------------------------------+-----------------+
-
-
-
-.
+﻿.
 ├── asset
 │   ├── ui
 │   │   ├── button
@@ -42,22 +12,49 @@
 │
 ├── src
 │   ├── autoload
-│   │   ├── ?.gd
 │   │
 │   ├── lib
-│   │   ├── mysql_connect.gd
-│   │   ├── ?.gd
+│   │   ├── DBconnection.gd
+│   │   ├── DBhelper.gd
+│   │   ├── InputHandler.gd
 │   │
-│   ├── modal
-│   │   ├── ?.gd 		{extend /libraries/mysql_connect.gd}
+│   ├── model
+│   │   ├── users
 │   │
 │   ├── controller
-│   │   ├── ?.gd
-│   │   ├── ?.gd
+│   │   ├── AkunController.gd
+│   │   ├── AuthController.gd
+│   │   ├── HomeController.gd
+│   │   ├── InvestasiController.gd
+│   │   ├── PendapatanController.gd
+│   │   ├── PengusahaController.gd
+│   │   ├── PeriodeIkanController.gd
 │   │
 │   ├── view
-│   │   ├── include
-│   │   ├── ?.tscn
-│   │   ├── ?.tscn
-│
+│   │   ├── laoyout
+│   │   │   ├── base.tscn
+│   │   │
+│   │   ├── Investor
+│   │   │   ├── investasi.tscn
+│   │   │   ├── pendapatan.tscn
+│   │   │   ├── pengusaha.tscn
+│   │   │
+│   │   ├── petugas_kearsipan
+│   │   │   ├── pendapatan.tscn
+│   │   │   ├── pengusaha.tscn
+│   │   │
+│   │   ├── petugas_keuangan
+│   │   │   ├── investasi.tscn
+│   │   │   ├── pendapatan.tscn
+│   │   │   ├── pengusaha.tscn
+│   │   │   ├── transfer.tscn
+│   │   │
+│   │   ├── petugas_survey│
+│   │   │   ├── bidangUsaha.tscn
+│   │   │   ├── pengusaha.tscn
+│   │   │   ├── periodeIkan.tscn
+│   │
+│   ├── addons
+│   │   ├── GDCharts
+│   
 └── project.godot

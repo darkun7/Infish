@@ -7,12 +7,16 @@ var level_user
 var PageInfo : Array setget setPageInfo
 var Name setget setName
 
-onready var DB      = preload("res://src/lib/DBconnection.gd").new()
+onready var DB      = $DBconnection
+onready var Helper  = load("res://src/lib/DBhelper.gd").new()
 
 func _ready():
 	$base.connect("user_setting", self, "_on_user_setting_pressed")
 	var session = DB.readSession()
 	role = session["role"]
+	
+	DB.handleRequest("GET", Helper.select_where("users", "email", "=", session["email"]))
+	
 	level_user = role.replace('_',' ').capitalize()
 	setName(session["username"] + " ("+level_user+")")
 	$base/PanelContainer/VBoxContainer/bg_side/user_box/Control/ProfilPict.texture = load("res://asset/img/"+role+".png")
@@ -136,3 +140,23 @@ func setName(value):
 	$base/PanelContainer/VBoxContainer/bg_side/user_box/Control/UserName.text = value
 
 
+
+
+func _request_completed(result, code, headers, body):
+	print("Respond Code: "+str(code))
+	var data
+	var session = DB.readSession()
+	
+	if code == 200:
+		data = JSON.parse(body.get_string_from_utf8()).result
+		var user     = data[0]
+		var email    = user[4]
+		var password = user[5]
+		var role     = user[6]
+		
+		if(session["email"] == email && session["pwd"] == password && role == role):
+			pass
+		else:
+			get_tree().change_scene("res://src/view/Auth.tscn")
+	else:
+		$MsgBox.open("ERROR","Koneksi","Gagal terhubung ke server. #Error Code:"+str(code))

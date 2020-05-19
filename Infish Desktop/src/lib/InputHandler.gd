@@ -5,6 +5,6 @@ func _ready():
 
 func validate(inputs, reqs):
 	for i in range(len(inputs)):
-		if(reqs[i] == 1 && inputs[i] == ''):
+		if(reqs[i] == 1 && str(inputs[i]) == ''):
 			return false
 	return true

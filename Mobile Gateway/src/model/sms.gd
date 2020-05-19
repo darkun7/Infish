@@ -24,7 +24,7 @@ func _gw_in_infish(pesan, pengirim):
 	db = MySQL
 	db.handle_request("POST", query)
 	#print(JSON.parse(yield(db, "request_completed")[3].get_string_from_utf8()).result)
-	return "a"
+	return "Respond System"
 	if (menu == pendapatan[0]):
 		param = pendapatan[1]
 		query = "INSERT INTO `sms`(`id_user`, `message`, `platform`) VALUES (1,'message','gw-test')"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/controller/AuthController.gd" type="Script" id=1]
 [ext_resource path="res://asset/img/side_img.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://asset/ui/button/secondary.stylebox" type="StyleBox" id=8]
 [ext_resource path="res://asset/ui/button/normal.stylebox" type="StyleBox" id=9]
 [ext_resource path="res://asset/ui/msgbox/MsgBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/lib/DBconnection.res" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 outline_size = 1
@@ -21,6 +22,7 @@ anchor_bottom = 1.0
 script = ExtResource( 1 )
 
 [node name="container" type="MarginContainer" parent="."]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -195,7 +197,10 @@ text = "Masuk"
 [node name="MsgBox" parent="." instance=ExtResource( 10 )]
 visible = false
 
+[node name="DBconnection" parent="." instance=ExtResource( 11 )]
+
 [connection signal="button_up" from="container/split/r_side/vcontainer/panel_login/btn_login" to="." method="_on_btn_login_button_up"]
 [connection signal="button_up" from="container/split/r_side/vcontainer/panel_login/btn_goto_register" to="." method="_on_btn_goto_register_button_up"]
 [connection signal="button_up" from="container/split/r_side/vcontainer/panel_register/btn_register" to="." method="_on_btn_register_button_up"]
 [connection signal="button_up" from="container/split/r_side/vcontainer/panel_register/btn_goto_login" to="." method="_on_btn_goto_login_button_up"]
+[connection signal="request_completed" from="DBconnection" to="." method="_request_completed"]

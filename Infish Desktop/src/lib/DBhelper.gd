@@ -10,8 +10,13 @@ func select(table : String)->String:
 	return querry
 
 #table, operator ,attribute, value
-func select_where(table : String, operator ,attr : String, value)->String:
-	querry = "SELECT * FROM `"+table+"`"+" WHERE `"+attr+"` "+operator+" `"+value+"`"
+func select_where(table : String,attr : String, operator : String, value)->String:
+	#querry = "SELECT * FROM `"+str(table)+"`"+" WHERE `"+str(attr)+"` "+str(operator)+" '"+str(value)+"'"
+	
+	table = "`"+str(table)+"`"
+	attr  = "`"+str(attr)+"`"
+	querry = "SELECT+*+FROM+"+table.percent_encode()+"+WHERE+"+attr.percent_encode()+str(operator)+"'"+str(value)+"'"
+	
 	print(">> Query: "+querry)
 	return querry
 
@@ -23,7 +28,7 @@ func insert(table : String, attr : Array, value : Array)->String:
 		attrs  += "`"+s+"`,"
 	attrs   =  str(attrs).substr(0, len(attrs)-1)
 	for s in value:
-		values += "'"+s+"',"
+		values += "'"+str(s)+"',"
 	values  =  str(values).substr(0, len(values)-1)
 	querry = "INSERT INTO `"+table+"`("+attrs+") VALUES ("+values+")"
 	print(">> Query: "+querry)

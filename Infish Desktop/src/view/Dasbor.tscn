@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/controller/HomeController.gd" type="Script" id=1]
 [ext_resource path="res://src/view/layout/base.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://asset/ui/icon/blue/icon_trade_blue.svg" type="Texture" id=14]
 [ext_resource path="res://asset/ui/icon/blue/icon_receipt_blue.svg" type="Texture" id=15]
 [ext_resource path="res://asset/ui/msgbox/MsgBox.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/lib/DBconnection.res" type="PackedScene" id=17]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -32,6 +33,7 @@ margin_top = 1.67017
 margin_bottom = 1.67017
 
 [node name="menucontent" type="PanelContainer" parent="base"]
+editor/display_folded = true
 margin_left = 12.0
 margin_top = 208.0
 margin_right = 232.0
@@ -173,7 +175,6 @@ expand = true
 stretch_mode = 6
 
 [node name="btn_bidangUsaha" type="TextureButton" parent="base/menucontent/scroll/container"]
-editor/display_folded = true
 margin_top = 164.0
 margin_right = 200.0
 margin_bottom = 201.0
@@ -315,6 +316,8 @@ scroll_deadzone = 10
 [node name="MsgBox" parent="." instance=ExtResource( 16 )]
 visible = false
 
+[node name="DBconnection" parent="." instance=ExtResource( 17 )]
+
 [connection signal="pressed" from="base/menucontent/scroll/container/Dasbor" to="." method="_on_Dasbor_pressed"]
 [connection signal="pressed" from="base/menucontent/scroll/container/btn_pengusaha" to="." method="_on_btn_pengusaha_pressed"]
 [connection signal="pressed" from="base/menucontent/scroll/container/btn_pendapatan" to="." method="_on_btn_pendapatan_pressed"]
@@ -323,3 +326,4 @@ visible = false
 [connection signal="pressed" from="base/menucontent/scroll/container/btn_periodeIkan" to="." method="_on_btn_periodeIkan_pressed"]
 [connection signal="pressed" from="base/menucontent/scroll/container/btn_investasi" to="." method="_on_btn_investasi_pressed"]
 [connection signal="pressed" from="base/menucontent/scroll/container/btn_transfer" to="." method="_on_btn_transfer_pressed"]
+[connection signal="request_completed" from="DBconnection" to="." method="_request_completed"]

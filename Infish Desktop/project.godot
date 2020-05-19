@@ -8,16 +8,93 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Reference",
+"class": "AES",
+"language": "GDScript",
+"path": "res://addons/Ncrypt/NCrypt/Cipher/AES.gd"
+}, {
+"base": "Reference",
+"class": "ARCFOUR",
+"language": "GDScript",
+"path": "res://addons/Ncrypt/NCrypt/Cipher/ARCFOUR.gd"
+}, {
+"base": "Reference",
+"class": "CHACHA",
+"language": "GDScript",
+"path": "res://addons/Ncrypt/NCrypt/Cipher/CHACHA.gd"
+}, {
+"base": "Reference",
+"class": "CSPRNG",
+"language": "GDScript",
+"path": "res://addons/Ncrypt/NCrypt/PRNG/CSPRNG.gd"
+}, {
+"base": "Reference",
+"class": "HMACSHA256",
+"language": "GDScript",
+"path": "res://addons/Ncrypt/NCrypt/Hash/HMACSHA256.gd"
+}, {
+"base": "Reference",
+"class": "NCrypt",
+"language": "GDScript",
+"path": "res://addons/Ncrypt/NCrypt/NCrypt.gd"
+}, {
+"base": "Reference",
+"class": "NCryptBenchmark",
+"language": "GDScript",
+"path": "res://addons/Ncrypt/NCryptTest/NCryptBenchmark.gd"
+}, {
+"base": "SceneTree",
+"class": "NCryptBenchmarkRunner",
+"language": "GDScript",
+"path": "res://addons/Ncrypt/NCryptTest/NCryptBenchmarkRunner.gd"
+}, {
+"base": "Reference",
+"class": "NCryptTest",
+"language": "GDScript",
+"path": "res://addons/Ncrypt/NCryptTest/NCryptTest.gd"
+}, {
+"base": "SceneTree",
+"class": "NCryptTestRunner",
+"language": "GDScript",
+"path": "res://addons/Ncrypt/NCryptTest/NCryptTestRunner.gd"
+}, {
+"base": "Reference",
+"class": "PKCS5",
+"language": "GDScript",
+"path": "res://addons/Ncrypt/NCrypt/Pad/PKCS5.gd"
+}, {
+"base": "Reference",
+"class": "SHA256",
+"language": "GDScript",
+"path": "res://addons/Ncrypt/NCrypt/Hash/SHA256.gd"
+}, {
+"base": "Reference",
+"class": "SIPHASH",
+"language": "GDScript",
+"path": "res://addons/Ncrypt/NCrypt/Hash/SIPHASH.gd"
+} ]
 _global_script_class_icons={
-
+"AES": "",
+"ARCFOUR": "",
+"CHACHA": "",
+"CSPRNG": "",
+"HMACSHA256": "",
+"NCrypt": "",
+"NCryptBenchmark": "",
+"NCryptBenchmarkRunner": "",
+"NCryptTest": "",
+"NCryptTestRunner": "",
+"PKCS5": "",
+"SHA256": "",
+"SIPHASH": ""
 }
 
 [application]
 
 config/name="In- Fish"
 run/main_scene="res://src/view/Auth.tscn"
-boot_splash/image="res://assets/img/black.png"
+boot_splash/image="res://asset/img/black.png"
 config/icon="res://icon.png"
 
 [display]
