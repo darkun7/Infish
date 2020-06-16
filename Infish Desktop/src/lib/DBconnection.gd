@@ -5,10 +5,10 @@ var session_path = "user://session.json"
 
 var server_data
 var default_data = {
-            username = "Tester",
-            password = "",
-            role = ""
-        }
+			username = "Tester",
+			password = "",
+			role = ""
+		}
 var data = {}
 
 func _ready():
@@ -28,10 +28,6 @@ func handleRequest(method: String, data : String):
 			var site = url+"infish_request_post.php?"
 			var headers = ["Content-Type: application/x-www-form-urlencoded", "Content-Length: "+str(query.length())]
 			request(site, headers, false, HTTPClient.METHOD_POST, query)
-	#var data_received = yield(self, "request_completed")  #await like function
-	#var raw_response  = JSON.parse(data_received[3].get_string_from_utf8()).result
-	#print(raw_response)
-	#print("P")
 
 func readSession():
 	var data

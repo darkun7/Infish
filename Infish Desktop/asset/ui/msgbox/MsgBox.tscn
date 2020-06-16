@@ -119,12 +119,17 @@ custom_styles/fg = SubResource( 2 )
 custom_styles/bg = SubResource( 3 )
 percent_visible = false
 
-[node name="close" type="Button" parent="."]
-margin_left = 758.15
-margin_top = 38.8
-margin_right = 777.15
-margin_bottom = 58.8
+[node name="close" type="Button" parent="box"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -23.1697
+margin_top = 3.24304
+margin_right = -4.16968
+margin_bottom = 23.243
 text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="timer" type="Timer" parent="."]
 process_mode = 0
@@ -133,7 +138,6 @@ process_mode = 0
 root_node = NodePath("")
 anims/FadeIn = SubResource( 4 )
 anims/FadeOut = SubResource( 5 )
-
-[connection signal="button_up" from="close" to="." method="_on_close_button"]
+[connection signal="button_up" from="box/close" to="." method="_on_close_button"]
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_finished"]

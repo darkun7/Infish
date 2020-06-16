@@ -27,13 +27,15 @@ font_data = ExtResource( 7 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="base" parent="." instance=ExtResource( 2 )]
 margin_top = 1.67017
 margin_bottom = 1.67017
 
 [node name="menucontent" type="PanelContainer" parent="base"]
-editor/display_folded = true
 margin_left = 12.0
 margin_top = 208.0
 margin_right = 232.0
@@ -80,7 +82,6 @@ expand = true
 stretch_mode = 6
 
 [node name="btn_pengusaha" type="TextureButton" parent="base/menucontent/scroll/container"]
-editor/display_folded = true
 margin_top = 41.0
 margin_right = 200.0
 margin_bottom = 78.0
@@ -112,7 +113,6 @@ expand = true
 stretch_mode = 6
 
 [node name="btn_pendapatan" type="TextureButton" parent="base/menucontent/scroll/container"]
-editor/display_folded = true
 margin_top = 82.0
 margin_right = 200.0
 margin_bottom = 119.0
@@ -206,7 +206,6 @@ expand = true
 stretch_mode = 6
 
 [node name="btn_periodeIkan" type="TextureButton" parent="base/menucontent/scroll/container"]
-editor/display_folded = true
 margin_top = 205.0
 margin_right = 200.0
 margin_bottom = 242.0
@@ -238,7 +237,6 @@ expand = true
 stretch_mode = 6
 
 [node name="btn_investasi" type="TextureButton" parent="base/menucontent/scroll/container"]
-editor/display_folded = true
 margin_top = 246.0
 margin_right = 200.0
 margin_bottom = 283.0
@@ -270,7 +268,6 @@ expand = true
 stretch_mode = 6
 
 [node name="btn_transfer" type="TextureButton" parent="base/menucontent/scroll/container"]
-editor/display_folded = true
 margin_top = 287.0
 margin_right = 200.0
 margin_bottom = 324.0
@@ -307,6 +304,9 @@ margin_top = 89.0
 margin_right = 1007.0
 margin_bottom = 585.0
 theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="scroll" type="ScrollContainer" parent="base/pagecontent"]
 margin_right = 752.0
@@ -317,7 +317,6 @@ scroll_deadzone = 10
 visible = false
 
 [node name="DBconnection" parent="." instance=ExtResource( 17 )]
-
 [connection signal="pressed" from="base/menucontent/scroll/container/Dasbor" to="." method="_on_Dasbor_pressed"]
 [connection signal="pressed" from="base/menucontent/scroll/container/btn_pengusaha" to="." method="_on_btn_pengusaha_pressed"]
 [connection signal="pressed" from="base/menucontent/scroll/container/btn_pendapatan" to="." method="_on_btn_pendapatan_pressed"]

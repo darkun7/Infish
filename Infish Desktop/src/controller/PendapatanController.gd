@@ -10,6 +10,7 @@ var data = [
 ["7","123404327", "Dewasa", "50.000", "19/04/2020", "Edit"]]
 
 func _ready():
+	
 	for c in range(len(data)):
 		for r in range(len(data[c])):
 			if(r != 6):

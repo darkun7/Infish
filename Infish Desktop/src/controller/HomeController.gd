@@ -31,14 +31,13 @@ func set_page(page : String)->void:
 	if(parent.get_child_count()!=2):
 		for n in parent.get_children():
 			parent.remove_child(n)
-			#n.queue_free()
 	parent.add_child(scene)
 
 func set_menu(role : String):
 	var path = "base/menucontent/scroll/container/btn_"
 	var btn  = ['pengusaha', 'pendapatan', 'laporan',
-	            'bidangUsaha', 'periodeIkan', 'investasi',
-	            'transfer']
+				'bidangUsaha', 'periodeIkan', 'investasi',
+				'transfer']
 	var active
 	for b in btn:
 		get_node(path+b).visible = false
@@ -138,9 +137,6 @@ func setPageInfo(value : Array):
 func setName(value):
 	Name = value
 	$base/PanelContainer/VBoxContainer/bg_side/user_box/Control/UserName.text = value
-
-
-
 
 func _request_completed(result, code, headers, body):
 	print("Respond Code: "+str(code))

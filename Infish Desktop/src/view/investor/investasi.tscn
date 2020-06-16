@@ -17,6 +17,9 @@ margin_top = 17.0
 margin_right = -136.0
 margin_bottom = 177.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="table" type="ItemList" parent="."]
 margin_left = -18.0
@@ -35,6 +38,5 @@ same_column_width = true
 icon_mode = 0
 
 [node name="tambah" parent="." instance=ExtResource( 3 )]
-
 [connection signal="item_rmb_selected" from="table" to="." method="_on_table_item_rmb_selected"]
 [connection signal="item_selected" from="table" to="." method="_on_table_item_selected"]

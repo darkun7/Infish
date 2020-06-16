@@ -11,7 +11,10 @@ func _ready():
 	#self.connect("connection_finished", self, "_catch_response")
 	#var query = "SELECT * FROM `users`"
 	#print(_api_request(query))
-	#var query = "INSERT INTO `users`(`nama_depan`, `nama_belakang`, `notelp`, `email`, `password`, `role`) VALUES ('Josheph','Doe','08116013106','john.doel@infish.com','johndoe','pengusaha')"
+	#var query = 
+	"INSERT INTO `users`(`nama_depan`, `nama_belakang`, `notelp`, `email`, `password`, `role`) VALUES ('Josheph','Doe','08116013106','john.doel@infish.com','johndoe','pengusaha')"
+	INSERT INTO `users`(`nama_depan`,`nama_belakang`,`notelp`,`email`,`password`) VALUES ('asd','asd','asd','asd','asd')
+
 	
 	#print(get("response"))
 	#talkToServer("https://worshipped-courts.000webhostapp.com/infish_request_get.php?", query)

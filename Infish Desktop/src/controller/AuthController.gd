@@ -7,7 +7,7 @@ onready var Model   = load("res://src/model/users.gd")
 
 func _ready():
 	OS.window_fullscreen = false
-	DB.connect("request_completed", self, "_catch_response")
+	#DB.connect("request_completed", self, "_catch_response")
 	
 	pass
 
@@ -48,10 +48,10 @@ func _on_btn_login_button_up():
 	if(Handler.validate(inputs, reqs)):
 		DB.handleRequest("GET", Helper.select_where("users", "email", "=", surel))
 		var data = {
-            email = surel,
+			email = surel,
 			pwd = sandi,
-            role = surel
-        }
+			role = surel
+		}
 		DB.saveSession(data)
 		#get_tree().change_scene("res://src/view/Dasbor.tscn")
 	else:
