@@ -1,12 +1,21 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/controller/PeriodeIkanController.gd" type="Script" id=1]
 [ext_resource path="res://asset/ui/ui.theme" type="Theme" id=2]
 [ext_resource path="res://asset/ui/button/btn_tambah.res" type="PackedScene" id=3]
-
+[ext_resource path="res://asset/ui/font/NotoSans-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://src/lib/DBconnection.res" type="PackedScene" id=5]
+[ext_resource path="res://asset/ui/msgbox/ModalBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://asset/ui/msgbox/MsgBox.tscn" type="PackedScene" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=2]
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="ImageTexture" id=3]
 
 [node name="pengusaha" type="Control"]
 anchor_right = 1.0
@@ -16,6 +25,11 @@ margin_top = 17.0
 margin_right = -136.0
 margin_bottom = 177.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DBconnection" parent="." instance=ExtResource( 5 )]
 
 [node name="table" type="ItemList" parent="."]
 margin_left = -18.0
@@ -32,6 +46,212 @@ auto_height = true
 max_columns = 4
 same_column_width = true
 icon_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="tambah" parent="." instance=ExtResource( 3 )]
 
+[node name="modal" parent="." instance=ExtResource( 6 )]
+visible = false
+margin_left = -235.458
+margin_top = -114.84
+margin_right = 788.542
+margin_bottom = 485.16
+
+[node name="add" type="Control" parent="modal"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 205.216
+margin_top = 132.0
+margin_right = -207.784
+margin_bottom = -127.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="id" type="LineEdit" parent="modal/add"]
+visible = false
+margin_left = 13.5454
+margin_top = 39.8052
+margin_right = 281.545
+margin_bottom = 70.8052
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/add/id"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "ID"
+
+[node name="in_jenis_ikan" type="LineEdit" parent="modal/add"]
+margin_left = 13.5454
+margin_top = 39.8052
+margin_right = 281.545
+margin_bottom = 70.8052
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/add/in_jenis_ikan"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Jenis Ikan"
+
+[node name="in_periode" type="SpinBox" parent="modal/add"]
+margin_left = 15.8879
+margin_top = 115.782
+margin_right = 283.888
+margin_bottom = 146.782
+theme = ExtResource( 2 )
+min_value = 1.0
+max_value = 3.0
+step = 0.1
+value = 1.0
+suffix = " Tahun"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/add/in_periode"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Periode"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_confirm" parent="modal/add" instance=ExtResource( 3 )]
+margin_left = 460.069
+margin_top = 307.643
+margin_right = 579.069
+margin_bottom = 336.643
+icon = SubResource( 3 )
+
+[node name="edit" type="Control" parent="modal"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 205.216
+margin_top = 132.0
+margin_right = -207.784
+margin_bottom = -127.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="id" type="LineEdit" parent="modal/edit"]
+visible = false
+margin_left = 13.5454
+margin_top = 39.8052
+margin_right = 281.545
+margin_bottom = 70.8052
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/id"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "ID"
+
+[node name="in_jenis_ikan" type="LineEdit" parent="modal/edit"]
+margin_left = 13.5454
+margin_top = 39.8052
+margin_right = 281.545
+margin_bottom = 70.8052
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_jenis_ikan"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Jenis Ikan"
+
+[node name="in_periode" type="SpinBox" parent="modal/edit"]
+margin_left = 15.8879
+margin_top = 115.782
+margin_right = 283.888
+margin_bottom = 146.782
+theme = ExtResource( 2 )
+min_value = 1.0
+max_value = 3.0
+step = 0.1
+value = 1.0
+suffix = " Tahun"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_periode"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Periode"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_confirm" parent="modal/edit" instance=ExtResource( 3 )]
+margin_left = 460.069
+margin_top = 307.643
+margin_right = 579.069
+margin_bottom = 336.643
+text = "Simpan"
+icon = SubResource( 3 )
+
+[node name="MsgBox" parent="." instance=ExtResource( 7 )]
+visible = false
+anchor_left = 0.117
+anchor_top = 0.033
+anchor_right = 0.117
+anchor_bottom = 0.033
+margin_left = -199.567
+margin_top = -48.84
+margin_right = 670.433
+margin_bottom = 711.16
+[connection signal="request_completed" from="DBconnection" to="." method="request_completed"]
+[connection signal="item_selected" from="table" to="." method="_on_table_item_selected"]
+[connection signal="pressed" from="tambah" to="." method="_on_tambah_pressed"]
+[connection signal="button_up" from="modal/add/btn_confirm" to="." method="_on_btn_add_button_up"]
+[connection signal="button_up" from="modal/edit/btn_confirm" to="." method="_on_btn_edit_button_up"]

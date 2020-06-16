@@ -12,6 +12,7 @@ var colnum = 6
 
 var state_request setget setState, getState
 var last_insert setget setLastInsert, getLastInsert
+var role setget setRole, getRole
 
 var data = [
 ["1","123404321", "24", "120.000", "18%", "24 Bln", "Edit"],
@@ -24,7 +25,7 @@ var data = [
 
 func _ready():
 	var session = DB.readSession()
-	var role = session ["role"]
+	setRole(session ["role"])
 	refresh()
 
 func refresh():
@@ -32,6 +33,8 @@ func refresh():
 	DB.handleRequest("POST", Helper.select("pengusaha"))
 
 func render_tables(data):
+	for c in range(colnum+1, $table.get_item_count()):
+		$table.remove_item(c)
 	for c in range(len(data)):
 		for r in range(len(data[c])):
 			if( data[c][r] == null ):
@@ -44,8 +47,10 @@ func render_tables(data):
 func _on_table_item_selected(index):
 	if( index > (colnum*2) ):
 		$modal.show()
-		$modal/edit.show()
-		$modal/add.hide()
+		if $modal.has_node("edit"):
+			$modal/edit.show()
+		if $modal.has_node("add"):
+			$modal/add.hide()
 		_open_pengusaha($table.get_item_text(index-5))
 		
 
@@ -56,13 +61,17 @@ func _open_pengusaha(nomor):
 
 func _on_tambah_pressed():
 	$modal.show()
-	$modal/edit.hide()
-	$modal/add.show()
+	if $modal.has_node("edit"):
+		$modal/edit.hide()
+	if $modal.has_node("add"):
+		$modal/add.show()
 
 func close_modal():
 	$modal.hide()
-	$modal/edit.hide()
-	$modal/add.hide()
+	if $modal.has_node("edit"):
+		$modal/edit.hide()
+	if $modal.has_node("add"):
+		$modal/add.hide()
 
 func _on_btn_confirm_button_up():
 	var path     = "modal/add/"
@@ -104,6 +113,10 @@ func _on_btn_edit_button_up():
 	var no_usaha = get_node(path+"in_no_usaha").get_text()
 	var sektor   = get_node(path+"in_sektor").get_selected()
 	var jml_pkj  = get_node(path+"in_jml_pkj").get_value()
+	var max_stok = get_node(path+"in_jml_pkj").get_value()
+	var hrg_stok = get_node(path+"in_jml_pkj").get_value()
+	var periode  = get_node(path+"in_periode").get_value()
+	var interest = get_node(path+"in_interest").get_value()
 	sandi = Marshalls.utf8_to_base64(sandi)
 	var inputs = [fname, lname, phone]
 	var reqs   = [1,1,1,1,1,0]
@@ -113,7 +126,7 @@ func _on_btn_edit_button_up():
 		DB.handleRequest("POST", Helper.update("users", attr, inputs, 'email', surel))
 		setState("add_pengusaha")
 		attr = ["sektor", "pekerja"]
-		inputs = [sektor, jml_pkj]
+		inputs = [sektor, jml_pkj, max_stok, hrg_stok, periode, interest]
 		DB3.handleRequest("POST", Helper.update("pengusaha", attr, inputs, 'nomor_usaha', no_usaha))
 		close_modal()
 		$MsgBox.open("SUKSES","Ubah Pengusaha","Pengusaha "+fname+" "+lname+" berhasil diperbarui.")
@@ -131,8 +144,13 @@ func request_completed(result, code, headers, body):
 				var i = 1
 				var table = []
 				print(data)
+				var action
+				if role == "petugas_survey" or role == "petugas_kearsipan":
+					action = "Ubah"
+				else:
+					action = "Lihat"
 				for pengusaha in data:
-					var col = [str(i), pengusaha["nomor_usaha"], pengusaha["maks_stok"], pengusaha["harga_stok"], pengusaha["interest"], pengusaha["periode_bagi"], "Edit"]
+					var col = [str(i), pengusaha["nomor_usaha"], pengusaha["maks_stok"], pengusaha["harga_stok"], pengusaha["interest"], pengusaha["periode_bagi"], action]
 					table.append(col)
 					i +=1
 				render_tables(table)
@@ -143,6 +161,9 @@ func request_completed(result, code, headers, body):
 				print(getLastInsert())
 			"open_pengusaha":
 				print(data[0])
+				for r in data:
+					if( r == null ):
+						data[0][r] = 0
 				var path     = "modal/edit/"
 				get_node(path+"in_fname").set_text(data[0]["nama_depan"])
 				get_node(path+"in_lname").set_text(data[0]["nama_belakang"])
@@ -155,9 +176,14 @@ func request_completed(result, code, headers, body):
 					get_node(path+"in_sektor").select(1)
 				get_node(path+"in_no_usaha").set_text(data[0]["nomor_usaha"])
 				get_node(path+"in_jml_pkj").set_value(float(data[0]["pekerja"]))
+				get_node(path+"in_max_stok").set_value(float(data[0]["maks_stok"]))
+				get_node(path+"in_hrg_stok").set_value(float(data[0]["harga_stok"]))
+				get_node(path+"in_periode").set_value(float(data[0]["periode_bagi"]))
+				get_node(path+"in_interest").set_value(float(data[0]["interest"]))
 		clearState()
-		
-		
+
+
+
 
 
 # ========= Setter & Getter ========
@@ -173,5 +199,8 @@ func setLastInsert(value):
 func getLastInsert():
 	return last_insert
 
-
+func setRole(value):
+	role = value
+func getRole():
+	return role
 

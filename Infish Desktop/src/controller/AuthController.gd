@@ -46,7 +46,7 @@ func _on_btn_login_button_up():
 	var inputs = [surel, sandi]
 	var reqs = [1,1]
 	if(Handler.validate(inputs, reqs)):
-		DB.handleRequest("GET", Helper.select_where("users", "email", "=", surel))
+		DB.handleRequest("POST", Helper.select_where("users", "email", "=", surel))
 		var data = {
 			email = surel,
 			pwd = sandi,
@@ -65,23 +65,24 @@ func _request_completed(result, code, headers, body):
 	
 	if code == 200:
 		data = JSON.parse(body.get_string_from_utf8()).result
-		
+		print("200")
 		if str(data) == "True":    #Register berhasil
 			$MsgBox.open("SUKSES","Pendaftaran","Anda berhasil melakukan pendaftaran.")
 			_on_btn_goto_login_button_up()
 		elif str(data) == "False": #Register gagal
-			$MsgBox.open("ERROR","Koneksi","Gagal terhubung ke server. #Error Code:"+str(code))
+			$MsgBox.open("ERROR","Koneksi",".Gagal terhubung ke server. #Error Code:"+str(code))
 		else:                      #If response contain Object
 			var user     = data[0]
-			var email    = user[4]
-			var password = Marshalls.base64_to_utf8(user[5])
+			print(data[0])
+			var email    = user["email"]
+			var password = Marshalls.base64_to_utf8(user["password"])
 			
 			if(session["email"] == email && session["pwd"] == password):
 				var newsession = {
-					username = user[1]+user[2],
+					username = user["nama_depan"]+user["nama_belakang"],
 					email    = email,
-					pwd      = user[5],
-					role     = user[6]
+					pwd      = user["password"],
+					role     = user["role"]
 				}
 				DB.saveSession(newsession)
 				get_tree().change_scene("res://src/view/Dasbor.tscn")

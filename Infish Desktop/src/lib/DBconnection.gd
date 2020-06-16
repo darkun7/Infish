@@ -13,7 +13,7 @@ var data = {}
 
 func _ready():
 	readSession()
-	self.connect("request_completed", self, "_catch_response")
+	#self.connect("request_completed", self, "_catch_response")
 	pass
 
 func handleRequest(method: String, data : String):

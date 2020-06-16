@@ -15,7 +15,7 @@ func _ready():
 	var session = DB.readSession()
 	role = session["role"]
 	
-	DB.handleRequest("GET", Helper.select_where("users", "email", "=", session["email"]))
+	DB.handleRequest("POST", Helper.select_where("users", "email", "=", session["email"]))
 	
 	level_user = role.replace('_',' ').capitalize()
 	setName(session["username"] + " ("+level_user+")")
@@ -146,9 +146,9 @@ func _request_completed(result, code, headers, body):
 	if code == 200:
 		data = JSON.parse(body.get_string_from_utf8()).result
 		var user     = data[0]
-		var email    = user[4]
-		var password = user[5]
-		var role     = user[6]
+		var email    = user["email"]
+		var password = user["password"]
+		var role     = user["role"]
 		
 		if(session["email"] == email && session["pwd"] == password && role == role):
 			pass

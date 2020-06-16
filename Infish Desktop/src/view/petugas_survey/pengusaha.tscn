@@ -1,14 +1,26 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/controller/PengusahaController.gd" type="Script" id=1]
 [ext_resource path="res://asset/ui/ui.theme" type="Theme" id=2]
 [ext_resource path="res://asset/ui/button/btn_tambah.res" type="PackedScene" id=3]
-
+[ext_resource path="res://src/lib/DBconnection.res" type="PackedScene" id=4]
+[ext_resource path="res://asset/ui/msgbox/MsgBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://asset/ui/msgbox/ModalBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://asset/ui/font/NotoSans-Regular.ttf" type="DynamicFontData" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [sub_resource type="ImageTexture" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.929412, 0.929412, 0.929412, 1 )
+
+[sub_resource type="ImageTexture" id=5]
 
 [node name="pengusaha" type="Control"]
 anchor_right = 1.0
@@ -18,6 +30,15 @@ margin_top = 17.0
 margin_right = -136.0
 margin_bottom = 177.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DBconnection" parent="." instance=ExtResource( 4 )]
+
+[node name="DBconnection2" parent="." instance=ExtResource( 4 )]
+
+[node name="DBconnection3" parent="." instance=ExtResource( 4 )]
 
 [node name="table" type="ItemList" parent="."]
 margin_left = -18.0
@@ -35,7 +56,359 @@ max_columns = 7
 same_column_width = true
 icon_mode = 0
 
-[node name="tambah" parent="." instance=ExtResource( 3 )]
+[node name="modal" parent="." instance=ExtResource( 6 )]
+visible = false
 
+[node name="edit" type="Control" parent="modal"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 205.216
+margin_top = 132.0
+margin_right = -207.784
+margin_bottom = -127.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="in_fname" type="LineEdit" parent="modal/edit"]
+margin_left = 13.5454
+margin_top = 39.8052
+margin_right = 281.545
+margin_bottom = 70.8052
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_fname"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Nama Depan"
+
+[node name="in_lname" type="LineEdit" parent="modal/edit"]
+margin_left = 310.545
+margin_top = 39.8052
+margin_right = 578.545
+margin_bottom = 70.8052
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_lname"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Nama Belakang"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="in_phone" type="SpinBox" parent="modal/edit"]
+margin_left = 13.5454
+margin_top = 109.972
+margin_right = 281.545
+margin_bottom = 140.972
+theme = ExtResource( 2 )
+min_value = 8.0
+value = 8.0
+allow_greater = true
+prefix = "+62"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_phone"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "No Handphone"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="in_surel" type="LineEdit" parent="modal/edit"]
+visible = false
+margin_left = 309.545
+margin_top = 109.972
+margin_right = 577.545
+margin_bottom = 140.972
+theme = ExtResource( 2 )
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_surel"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Alamat Surel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="in_sandi" type="LineEdit" parent="modal/edit"]
+visible = false
+margin_left = 309.545
+margin_top = 183.972
+margin_right = 577.545
+margin_bottom = 214.972
+theme = ExtResource( 2 )
+editable = false
+secret = true
+secret_character = "•"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_sandi"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Kata Sandi"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="in_no_usaha" type="LineEdit" parent="modal/edit"]
+margin_left = 311.886
+margin_top = 111.141
+margin_right = 579.885
+margin_bottom = 142.141
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_no_usaha"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "No Usaha"
+
+[node name="in_sektor" type="OptionButton" parent="modal/edit"]
+margin_left = 14.7732
+margin_top = 181.913
+margin_right = 282.773
+margin_bottom = 212.913
+theme = ExtResource( 2 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
+text = "pembibitan"
+items = [ "pembibitan", null, false, 0, null, "pembesaran", null, false, 1, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_sektor"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Sektor"
+
+[node name="in_jml_pkj" type="SpinBox" parent="modal/edit"]
+margin_left = 311.773
+margin_top = 183.308
+margin_right = 579.773
+margin_bottom = 214.308
+theme = ExtResource( 2 )
+min_value = 1.0
+value = 1.0
+allow_greater = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_jml_pkj"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Jumlah Pekerja"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="in_max_stok" type="SpinBox" parent="modal/edit"]
+visible = false
+margin_left = 310.545
+margin_top = 256.972
+margin_right = 578.545
+margin_bottom = 287.972
+theme = ExtResource( 2 )
+min_value = 1.0
+value = 1.0
+allow_greater = true
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_max_stok"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Maks Stok"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="in_hrg_stok" type="SpinBox" parent="modal/edit"]
+visible = false
+margin_left = 310.545
+margin_top = 256.972
+margin_right = 578.545
+margin_bottom = 287.972
+theme = ExtResource( 2 )
+min_value = 1.0
+value = 1.0
+allow_greater = true
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_hrg_stok"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Harga per Stok"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="in_periode" type="SpinBox" parent="modal/edit"]
+margin_left = 16.8608
+margin_top = 252.761
+margin_right = 284.861
+margin_bottom = 283.761
+theme = ExtResource( 2 )
+min_value = 1.0
+value = 1.0
+allow_greater = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_periode"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Periode"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="in_interest" type="SpinBox" parent="modal/edit"]
+visible = false
+margin_left = 310.545
+margin_top = 256.972
+margin_right = 578.545
+margin_bottom = 287.972
+theme = ExtResource( 2 )
+min_value = 10.0
+max_value = 20.0
+value = 10.0
+rounded = true
+editable = false
+suffix = "%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_interest"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Return of Interest (ROI)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_confirm" type="Button" parent="modal/edit" instance=ExtResource( 3 )]
+margin_left = 460.069
+margin_top = 307.643
+margin_right = 579.069
+margin_bottom = 336.643
+theme = ExtResource( 2 )
+text = "Simpan"
+icon = SubResource( 5 )
+clip_text = true
+
+[node name="MsgBox" parent="." instance=ExtResource( 5 )]
+visible = false
+anchor_left = 0.117
+anchor_top = 0.033
+anchor_right = 0.117
+anchor_bottom = 0.033
+[connection signal="request_completed" from="DBconnection" to="." method="request_completed"]
+[connection signal="request_completed" from="DBconnection2" to="." method="request_completed"]
+[connection signal="request_completed" from="DBconnection3" to="." method="request_completed"]
 [connection signal="item_rmb_selected" from="table" to="." method="_on_table_item_rmb_selected"]
 [connection signal="item_selected" from="table" to="." method="_on_table_item_selected"]
+[connection signal="button_up" from="modal/edit/btn_confirm" to="." method="_on_btn_edit_button_up"]

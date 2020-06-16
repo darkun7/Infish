@@ -494,6 +494,124 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="in_max_stok" type="SpinBox" parent="modal/edit"]
+visible = false
+margin_left = 310.545
+margin_top = 256.972
+margin_right = 578.545
+margin_bottom = 287.972
+theme = ExtResource( 2 )
+min_value = 1.0
+value = 1.0
+allow_greater = true
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_max_stok"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Maks Stok"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="in_hrg_stok" type="SpinBox" parent="modal/edit"]
+visible = false
+margin_left = 310.545
+margin_top = 256.972
+margin_right = 578.545
+margin_bottom = 287.972
+theme = ExtResource( 2 )
+min_value = 1.0
+value = 1.0
+allow_greater = true
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_hrg_stok"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Harga per Stok"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="in_periode" type="SpinBox" parent="modal/edit"]
+visible = false
+margin_left = 310.545
+margin_top = 256.972
+margin_right = 578.545
+margin_bottom = 287.972
+theme = ExtResource( 2 )
+min_value = 1.0
+value = 1.0
+allow_greater = true
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_periode"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Periode"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="in_interest" type="SpinBox" parent="modal/edit"]
+visible = false
+margin_left = 310.545
+margin_top = 256.972
+margin_right = 578.545
+margin_bottom = 287.972
+theme = ExtResource( 2 )
+min_value = 10.0
+max_value = 20.0
+value = 10.0
+rounded = true
+editable = false
+suffix = "%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modal/edit/in_interest"]
+margin_left = 2.0
+margin_top = -31.6245
+margin_right = 47.0
+margin_bottom = -8.62447
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Return of Interest (ROI)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="btn_confirm" parent="modal/edit" instance=ExtResource( 3 )]
 margin_left = 460.069
 margin_top = 307.643
