@@ -61,6 +61,8 @@ func set_menu(role : String):
 
 # ======== Event Handler =======
 func _on_Dasbor_pressed():
+	var session = DB.readSession()
+	setName(session["username"] + " ("+level_user+")")
 	setPageInfo(["Dasbor", "Halaman dasbor untuk "+level_user])
 	set_page("res://src/view/Grafik.tscn")
 
@@ -149,9 +151,18 @@ func _request_completed(result, code, headers, body):
 		var email    = user["email"]
 		var password = user["password"]
 		var role     = user["role"]
+		var id       = user["id"]
 		
 		if(session["email"] == email && session["pwd"] == password && role == role):
-			pass
+			var newsession = {
+					username = user["nama_depan"]+" "+user["nama_belakang"],
+					email    = email,
+					pwd      = password,
+					role     = role,
+					id       = id
+				}
+			DB.saveSession(newsession)
+			setName(newsession["username"] + " ("+role+")")
 		else:
 			get_tree().change_scene("res://src/view/Auth.tscn")
 	else:

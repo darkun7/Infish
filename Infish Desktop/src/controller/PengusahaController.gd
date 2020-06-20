@@ -133,6 +133,26 @@ func _on_btn_edit_button_up():
 	else:
 		$MsgBox.open("ERROR","Ubah Pengusaha","Isian formulir belum lengkap.")
 
+func _on_btn_pick_file_pressed():
+	$FileDialog.popup()
+
+func _on_btn_upload_transaksi():
+	var path       = "modal/"
+	var session    = DB.readSession()
+	var uid        = session["id"]
+	var id         = get_node(path+"id").get_text()
+	var b_tujuan   = get_node(path+"in_b_tujuan").get_text()
+	var b_pengirim = get_node(path+"in_b_pengirim").get_text()
+	var norek      = get_node(path+"in_norek").get_text()
+	var nominal    = get_node(path+"in_nominal").get_text()
+	var tgl        = get_node(path+"in_tgl").get_text()
+	var file = File.new()
+	file.open("user://temp-upload.txt", File.READ)
+	var bukti      = file.get_as_text()
+	var attr       = ["id_pengusaha", "id_user", "bank_tujuan", "bank_pengirim", "nomor_rekening", "tanggal", "nominal", "bukti"]
+	var inputs     = [id, uid, b_tujuan, b_pengirim, norek, tgl, nominal, bukti]
+	DB.handleRequest("POST", Helper.insert("investasi", attr, inputs))
+
 func request_completed(result, code, headers, body):
 	print("Respond Code: "+str(code))
 	var data
@@ -165,21 +185,25 @@ func request_completed(result, code, headers, body):
 					if( r == null ):
 						data[0][r] = 0
 				var path     = "modal/edit/"
-				get_node(path+"in_fname").set_text(data[0]["nama_depan"])
-				get_node(path+"in_lname").set_text(data[0]["nama_belakang"])
-				get_node(path+"in_phone").set_value(float(data[0]["notelp"]))
-				get_node(path+"in_surel").set_text(data[0]["email"])
-				get_node(path+"in_sandi").set_text("")
-				if(data[0]["sektor"] == "pembibitan"):
-					get_node(path+"in_sektor").select(0)
+				if(getRole() != "investor"):
+					get_node(path+"in_fname").set_text(data[0]["nama_depan"])
+					get_node(path+"in_lname").set_text(data[0]["nama_belakang"])
+					get_node(path+"in_phone").set_value(float(data[0]["notelp"]))
+					get_node(path+"in_surel").set_text(data[0]["email"])
+					get_node(path+"in_sandi").set_text("")
+					if(data[0]["sektor"] == "pembibitan"):
+						get_node(path+"in_sektor").select(0)
+					else:
+						get_node(path+"in_sektor").select(1)
+					get_node(path+"in_no_usaha").set_text(data[0]["nomor_usaha"])
+					get_node(path+"in_jml_pkj").set_value(float(data[0]["pekerja"]))
+					get_node(path+"in_max_stok").set_value(float(data[0]["maks_stok"]))
+					get_node(path+"in_hrg_stok").set_value(float(data[0]["harga_stok"]))
+					get_node(path+"in_periode").set_value(float(data[0]["periode_bagi"]))
+					get_node(path+"in_interest").set_value(float(data[0]["interest"]))
 				else:
-					get_node(path+"in_sektor").select(1)
-				get_node(path+"in_no_usaha").set_text(data[0]["nomor_usaha"])
-				get_node(path+"in_jml_pkj").set_value(float(data[0]["pekerja"]))
-				get_node(path+"in_max_stok").set_value(float(data[0]["maks_stok"]))
-				get_node(path+"in_hrg_stok").set_value(float(data[0]["harga_stok"]))
-				get_node(path+"in_periode").set_value(float(data[0]["periode_bagi"]))
-				get_node(path+"in_interest").set_value(float(data[0]["interest"]))
+					path = "modal/"
+					get_node(path+"id").set_text(data[0]["id"])
 		clearState()
 
 
@@ -203,4 +227,26 @@ func setRole(value):
 	role = value
 func getRole():
 	return role
+
+
+
+func _on_transfer_file_selected(path):
+	print(path)
+	$modal/in_bukti.set_text(path)
+	var file = File.new()
+	var image = File.new()
+	image.open(path, File.READ)
+	file.open("user://temp-upload.txt", File.WRITE)
+	file.store_string(Marshalls.raw_to_base64(image.get_buffer(image.get_len())))
+	file.close()
+	
+	file.open("user://temp-upload.txt", File.READ)
+	var load_data = file.get_as_text()
+	print(load_data)
+	var result = Image.new()
+	result.load_png_from_buffer(Marshalls.base64_to_raw(load_data))
+	file.close()
+
+
+
 

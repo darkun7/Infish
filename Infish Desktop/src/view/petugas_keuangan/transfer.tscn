@@ -12,6 +12,9 @@ margin_left = 19.2277
 margin_top = 18.2278
 margin_right = -134.772
 margin_bottom = 178.228
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="table" type="ItemList" parent="."]
 visible = false
@@ -84,4 +87,3 @@ margin_right = 445.0
 margin_bottom = 86.0
 theme = ExtResource( 1 )
 text = "Unduh"
-

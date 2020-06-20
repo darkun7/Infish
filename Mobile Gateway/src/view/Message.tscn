@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/controller/MessageController.gd" type="Script" id=1]
-[ext_resource path="res://src/lib/MySQL.res" type="PackedScene" id=2]
+[ext_resource path="res://src/lib/DBconnection.res" type="PackedScene" id=2]
 [ext_resource path="res://assets/ui/icon/indicator_signal.png" type="Texture" id=3]
 [ext_resource path="res://assets/ui/icon/indicator_battery.png" type="Texture" id=4]
 [ext_resource path="res://assets/ui/font/OpenSans-Bold.ttf" type="DynamicFontData" id=5]
@@ -52,10 +52,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MySQL" parent="." instance=ExtResource( 2 )]
+[node name="DBconnection" parent="." instance=ExtResource( 2 )]
 
 [node name="indicator" type="ColorRect" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -447.0
@@ -93,7 +92,6 @@ custom_fonts/font = SubResource( 1 )
 text = "19:22"
 
 [node name="nav" type="ColorRect" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 33.0
@@ -202,6 +200,9 @@ margin_left = 8.0
 margin_top = 9.0
 margin_right = -9.0
 margin_bottom = -58.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="msgContainer" type="VBoxContainer" parent="msgLog/scroll"]
 margin_right = 287.0
@@ -263,7 +264,6 @@ expand = true
 stretch_mode = 3
 
 [node name="formatOption" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_top = 465.0
 margin_right = 320.0
@@ -336,7 +336,6 @@ margin_left = 164.517
 margin_top = 47.8819
 margin_right = 204.517
 margin_bottom = 87.8819
-
 [connection signal="button_up" from="header/btn_PhoneSetting" to="." method="_on_btn_PhoneSetting_button_up"]
 [connection signal="text_changed" from="header/sender/phoneNumber" to="." method="_on_phoneNumber_text_changed"]
 [connection signal="button_up" from="messageBox/btnSend" to="." method="_on_btnSend_button_up"]

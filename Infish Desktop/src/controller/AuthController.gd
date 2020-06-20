@@ -82,7 +82,8 @@ func _request_completed(result, code, headers, body):
 					username = user["nama_depan"]+user["nama_belakang"],
 					email    = email,
 					pwd      = user["password"],
-					role     = user["role"]
+					role     = user["role"],
+					id       = user["id"]
 				}
 				DB.saveSession(newsession)
 				get_tree().change_scene("res://src/view/Dasbor.tscn")

@@ -1,5 +1,6 @@
 extends Control
 
+onready var DB        = $DBconnection
 onready var Handler   = load("res://src/lib/InputHandler.gd").new()
 onready var gw        = load("res://src/model/sms.gd").new()
 onready var message   = $messageBox/msg
@@ -14,6 +15,7 @@ var noHp
 func _ready():
 	message.text = "Tulis Pesan"
 	noHp = $header/sender/phoneNumber.text
+	#DB.handleRequest("POST", Helper.insert("users", attr, inputs))
 
 func _process(delta):
 	if(delta):
